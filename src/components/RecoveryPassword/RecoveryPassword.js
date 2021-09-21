@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from '@material-ui/core';
 import { Redirect } from 'react-router';
+// import { Login,} from '../login/Login';
 
 export const RecoveryPassword = ({history}) => {
 
@@ -16,7 +17,7 @@ export const RecoveryPassword = ({history}) => {
         <div>
             <h1>CreateNewAccount</h1>
             <Button
-            color="secondary"
+            color="primary"
             size="medium"
             onClick={handleReturn}
             >

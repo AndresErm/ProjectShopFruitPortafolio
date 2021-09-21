@@ -1,200 +1,170 @@
-import React from 'react'
-import {
-        Button,
-        TextField,
-        makeStyles,
-        Grid,
-} from '@material-ui/core';
-import { createTheme } from '@material-ui/core';
-import { useForm } from '../../hooks/useForm';
-import {CreateNewAccount} from'../createNewAccount/CreateNewAccount'
-import { RecoveryPassword } from '../RecoveryPassword/RecoveryPassword';
-import { AppRouter } from '../../routes/AppRouter';
-import { Link } from 'react-router-dom';
-
-export const themeDeferent = createTheme({
-    breakpoints: {
-        values:{
-            tablet: 640,
-            laptop: 1024,
-            desktop: 1290,
-        }
-    }
-});
+import React, { useEffect } from "react";
+import { Button, TextField, makeStyles, Box } from "@material-ui/core";
+// import { createTheme } from "@material-ui/core";
+import { useForm } from "../../hooks/useForm";
+import { CreateNewAccount } from "../createNewAccount/CreateNewAccount";
+import { RecoveryPassword } from "../RecoveryPassword/RecoveryPassword";
+import { AppRouter } from "../../routes/AppRouter";
+import { Link } from "react-router-dom";
+import '../login/background.css'
 
 
 const useStyles = makeStyles((theme) => ({
-            
-            root:{
-                minWidth: "auto",
-                maxWidth: 2204,
-                backgroundColor: theme.palette.primary.dark,
-                // [theme.breakpoints.down('md')]:{
-                //     backgroundColor: 'red',
-                // }
-            },
+  root: {
+    maxHeight: "auto",
+    display: "flex",
+    alignItems: "flex-end",
+    justifyContent:"center",
+  },
 
-            contentLogin:{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                textAlign: 'center',
-                maxWidth: 420,
-                height: 380,
-                backgroundColor: theme.palette.background.default,
-                // [theme.breakpoints.down('xs','md',)]:{
-                //     maxWidth: 320,
-                //     maxHeight: 280,
-                // },
-                // borderRadius: 10,
-            },
-            inputsLogin:{
-                // margin: 10,
-                // padding: 10,
-                
-                maxWidth: 280,
-                maxHeight: 200,
-                color: theme.palette.primary.main,
-                borderRadius: 10,
-            },
-            btnLogin:{
-                margin: 10,
-                width: 70,
-                height:50,
-                backgroundColor: theme.palette.primary.main,
-                color: theme.palette.grey[50],
-            },
-            btnRoute:{
-                text: theme.palette.secondary.dark,
-            },
+  contentLogin: {
+    display: "flex",
+    flexDirection: "column",
+    minWidth: 439, //420
+    height: 369, //380
+    backgroundColor: theme.palette.background.default,
+    marginTop: 115,
+    borderRadius: 15,
+    [theme.breakpoints.down("sm")]: {
+      width: 360,
+      height: 640,
+      marginTop: -5,   
+    },
+  },
+  inputsLogin: {
+    display: "flex",
+    flexDirection: "column",
+    marginTop: 35,
+    minHeight: "auto",
+    minWidth: 300,
+    color: theme.palette.primary.main,
+    borderRadius: 15,
+  },
+  routeDecoration: {
+    textDecoration: "none",
+    color: theme.palette.primary.main,
+    width: 175,
+    height: -50,
+  },
+  btnLogin:{
+    marginBottom: 5,
+    marginTop: 25,
+    width: 150,
+    height: 50,
+    marginLeft: 67,
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.grey[50],
+    borderRadius: 10,
+  },
+  btnRouteOne: {
+    marginTop: 10,
+    marginInlineStart: "-7%",
+    width: 180,
+    height: 35,
+  },
+  btnRouteTwo: {
+    marginBottom: 25,
+    marginTop: 7,
+    marginInlineStart: "-6%",
+    width: 180,
+    height: 35,
+  },
 }));
 
-// const useStyles = makeStyles((theme)  => ({
-//     root:{
-//         minHeight: "60%",
-//         minWidth: 650,
-//         background: theme.palette.background.default,
-//     },
-//     contentLogin:{
-//         width: 600,
-//         height: 400,
-//         background: theme.palette.background.default,
-//     },
-//     inputsLogin:{
-//         width: 200,
-//         height: 200,
-//         color: theme.palette.primary.main,
-//         borderRadius: 10,
-//     },
-//     btnLogin:{
-//         width: 70,
-//         height:50,
-//         color: theme.palette.primary.main,
-//     },
-//     btnRoute:{
-//         boxDecorationBreak:Link()
-//     },
-
-// }));
 
 
 export const Login = () => {
-
-    <AppRouter>
-    <CreateNewAccount/>
+  <AppRouter>
+    <CreateNewAccount />
     <Link to="/create-account"></Link>
-    <RecoveryPassword/>
+    <RecoveryPassword />
     <Link to="/recovery-password"></Link>
-    </AppRouter>
-    // console.log({handleCreateNewAccount: createAccountNew}, {handleRecoveryPassword} + "Si Recibe El Callback")
-    
-    const classes = useStyles();
+  </AppRouter>;
 
-    const [formValues, handleInputChange] = useForm({
-        name: '',
-        password: ''
-    });
-    
-    const {name, password} = formValues;
+  const classes = useStyles();
+ 
+  const [formValues, handleInputChange] = useForm({
+    name: "",
+    password: "",
+  });
 
-    // useEffect(() =>{
-    // }, [name]);
+  const { name, password } = formValues;
 
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-        console.log(formValues)
-    } 
-    
-    return (
+  
 
-    <Grid 
-        container
-            className={classes.root}
-            >    
-        <Grid 
-            item
-            onSubmit={ handleSubmit }
-            className={classes.contentLogin} 
-            borderColor={3}
-            >       
-        <TextField
-            onChange={ handleInputChange  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log( formValues  )
+    // document.getElementById("Content").innerHTML =
+    // "Value Name: " + name + "Value Password: " +password; 
+    // console.log(formValues);
+  };
+
+  return (
+    <Box justifyContent="flex-end" className={classes.root}>
+      <Box
+        className={classes.contentLogin}
+        // className={classes.routeDecoration}
+        alignItems="center"
+        border={2}
+        flexDirection="flex"
+      >
+        <form onSubmit={handleSubmit} component="form">
+          <TextField
+            onChange={handleInputChange}
             className={classes.inputsLogin}
             id="gmail"
             type="text"
             name="name"
-            value={ name }
-            placeholder="Ingresa Tu Gmail"
+            value={name}
+            placeholder="Ingresa Tu Usuario"
+            label="Usuario"
             variant="outlined"
-            color="secondary"
             autoComplete="off"
-            >
-        </TextField>
-        
-        <TextField
-            onChange={ handleInputChange }
+            focused={true}
+          ></TextField>
+
+          <TextField
+            onChange={handleInputChange}
             className={classes.inputsLogin}
             id="password"
             type="password"
             name="password"
-            value={ password }
+            value={password}
             placeholder="Ingresa Tu Contraseña"
+            label="Contraseña"
             variant="outlined"
-            color="secondary"
             autoComplete="off"
-            >
-        </TextField>
-        </Grid>
+            focused={true}
+          ></TextField>
+          <Button 
+          type="submit"
+          className={classes.btnLogin}
+            
+          >
+           Inicia Sesión
+           </Button>
+        </form>
+        <Box id="Content">
 
-        <Grid 
-            item
-            className={classes.btnLogin}
-            >
-            <Button
-            type="submit"
-            >
-            Ingresar
-            </Button>      
-        </Grid>
-            
-        <Grid 
-            item
-            className={classes.btnRoute}
-            >  
-            <Link 
-            className={classes.btnLogin}
-            to={"/create-account"}
-            >
-            Crear Nueva Cuenta
+        </Box>
+      <Box className={classes.routeDecoration}>
+        <Box className={classes.routeDecoration}>
+          <Button className={classes.btnRouteOne}>
+            <Link className={classes.routeDecoration} to={"/create-account"}>
+              Crear Nueva Cuenta
             </Link>
-            
-            <Link 
-            className={classes.btnLogin}
-            to={"/recovery-password"}
-            >
-            Recuperar Contraseña    
+          </Button>
+
+          <Button className={classes.btnRouteTwo}>
+            <Link className={classes.routeDecoration} to={"/recovery-password"}>
+              Recuperar Contraseña
             </Link>
-        </Grid>   
-    </Grid>
-    );
+          </Button>
+        </Box>
+      </Box>
+      </Box>
+
+    </Box>
+  );
 };
