@@ -7,7 +7,6 @@ import { useCreateNewAccount } from "../../hooks/useCreateNewAccount";
 import { useVerifyPassword } from "../../hooks/useVerifyPassword";
 // import { Button, TextField, makeStyles, Box } from "@material-ui/core";
 // // import { createTheme } from "@material-ui/core";
-// import { CreateNewAccount } from "../createNewAccount/CreateNewAccount";
 // import { RecoveryPassword } from "../RecoveryPassword/RecoveryPassword";
 // import { AppRouter } from "../../routes/AppRouter";
 
@@ -15,6 +14,10 @@ import { useVerifyPassword } from "../../hooks/useVerifyPassword";
 /**.main{
  * overflow-y: scroll
  * } */
+
+
+
+  // So Verify My Inputs Material Snackbar SECTION FEEDBACK
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,6 +84,8 @@ const useStyles = makeStyles((theme) => ({
 
 export const CreateNewAccount = () =>  {
 
+
+
   const classes = useStyles();
 
   const [ useChangeUser ,handleInputChangeUser] = useCreateNewAccount({
@@ -88,11 +93,11 @@ export const CreateNewAccount = () =>  {
   });
   const [ useChangePassword, handleInputChangePassword ] = useVerifyPassword({
     password: "",
-    verify: ""
+    verify: "",
   })
 
   let { name } = useChangeUser;
-  let { password, verify } = useChangePassword;
+  const { password, verify } = useChangePassword;
 
   let save =  localStorage.getItem("User");
   name = localStorage.setItem("User", JSON.stringify(name));
@@ -101,10 +106,25 @@ export const CreateNewAccount = () =>  {
   
   
   useEffect(() =>{
-    if(password === verify){
-      document.getElementById("Content").innerHTML =
-      "value:" + password + "valueTwo:" + verify;
-     }
+  //  password[password] = password;
+  //  verify[verify] = verify;
+
+   if(!password !== password){
+     console.log("Creando Contraseña")
+    }else if(password === verify  ){
+      console.log("Las contraseñas coinciden")
+    }
+ 
+
+    // document.getElementById("Content").innerHTML =
+    // "value:" + password + "valueTwo:" + verify;
+    // alert("Las contraseñas no coinciden");
+    // if(password === verify){
+    //   document.getElementById("Content").innerHTML =
+    //   "value:" + password + "valueTwo:" + verify;
+    //   alert("Las contraseñas no coinciden");
+    //  }
+
   }, [password, verify]);
   
   useEffect(() => {
@@ -185,7 +205,6 @@ export const CreateNewAccount = () =>  {
             <Button 
             type="submit"
             className={classes.btnLogin}
-              
             >
              Crear Cuenta
              </Button>
@@ -196,9 +215,11 @@ export const CreateNewAccount = () =>  {
         <Box className={classes.routeDecoration}>
           <Box className={classes.routeDecoration}>
             <Button className={classes.btnRouteOne}>
-              <Link className={classes.routeDecoration} to={"/"}>
-                Iniciar Sesión
-              </Link>
+     
+              <Link className={classes.routeDecoration} to={"/Login"}> 
+              Iniciar Sesión 
+               </Link>
+
             </Button>
           </Box>
         </Box>

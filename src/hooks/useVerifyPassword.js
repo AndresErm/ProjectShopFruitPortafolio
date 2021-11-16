@@ -8,9 +8,9 @@ export const useVerifyPassword = ( initialState = {} ) => {
             ...values,
             [target.name]: target.value
         });
-        if(!target.name === target.value){
-            console.log("Son iguales")
-        }
+        // if(!target.name === target.value){
+        //     console.log("Son iguales")
+        // }
 
     }
     return[values, handleInputChangePassword];

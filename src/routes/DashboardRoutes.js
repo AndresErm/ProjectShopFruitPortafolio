@@ -1,7 +1,9 @@
 import React from 'react'
-import { Redirect ,Route, Switch } from 'react-router-dom';
+import { Redirect,Route, Switch } from 'react-router-dom';
 import {CreateNewAccount} from '../components/createNewAccount/CreateNewAccount';
 import { RecoveryPassword } from '../components/RecoveryPassword/RecoveryPassword';
+import { Login } from '../components/login/Login';
+
 
 
 // const NewAccountCreate = React.lazy(
@@ -13,9 +15,10 @@ export const DashboardRoutes = () => {
         <> 
         <div>
             <Switch>
+            <Route exact path="/login" component={Login}/>
             <Route exact path="/create-account" component={CreateNewAccount}/>
             <Route exact path="/recovery-password" component={RecoveryPassword}/>
-            <Redirect to="/login" />
+            <Redirect to="/Home-Shop" />
             </Switch>
         </div>
         </>

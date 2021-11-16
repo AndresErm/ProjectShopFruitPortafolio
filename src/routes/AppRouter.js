@@ -4,6 +4,9 @@ import {DashboardRoutes} from './DashboardRoutes';
 import { Login } from '../components/login/Login';
 import { ThemeProvider } from '@material-ui/styles';
 import {newTheme} from '../theme/theme';
+import { HomeShop } from '../components/homeShop/HomeShop';
+// import { Login } from '../components/login/Login';
+
 
 // const LoginHome = React.lazy(() => import("../components/login/Login"));
 
@@ -14,7 +17,7 @@ export const AppRouter = () => {
             <div>        
         <ThemeProvider theme={newTheme} >
             <Switch>
-                <Route exact path="/login" component={Login}/>
+                <Route exact path="/Home-Shop" component={HomeShop}/>
                 <Route path="/" component={DashboardRoutes}/>
             </Switch>
         </ThemeProvider>

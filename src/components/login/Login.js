@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import { Button, TextField, makeStyles, Box } from "@material-ui/core";
 // import { createTheme } from "@material-ui/core";
 import { useForm } from "../../hooks/useForm";
-import { CreateNewAccount } from "../createNewAccount/CreateNewAccount";
-import { RecoveryPassword } from "../RecoveryPassword/RecoveryPassword";
+// import { CreateNewAccount } from "../createNewAccount/CreateNewAccount";
+// import { RecoveryPassword } from "../RecoveryPassword/RecoveryPassword";
 import { AppRouter } from "../../routes/AppRouter";
 import { Link } from "react-router-dom";
 import '../login/background.css'
+
+
+// import { HomeShop, Login } from "../homeShop/HomeShop";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -74,12 +77,12 @@ const useStyles = makeStyles((theme) => ({
 
 
 export const Login = () => {
+
   <AppRouter>
-    <CreateNewAccount />
-    <Link to="/create-account"></Link>
-    <RecoveryPassword />
-    <Link to="/recovery-password"></Link>
-  </AppRouter>;
+    <Login>
+      <Link to="/Home-Shop"></Link>
+    </Login>
+  </AppRouter>
 
   const classes = useStyles();
  
@@ -142,7 +145,9 @@ export const Login = () => {
           className={classes.btnLogin}
             
           >
-           Inicia Sesión
+    
+            Inicia Sesión
+
            </Button>
         </form>
         <Box id="Content">
@@ -151,16 +156,17 @@ export const Login = () => {
       <Box className={classes.routeDecoration}>
         <Box className={classes.routeDecoration}>
           <Button className={classes.btnRouteOne}>
-            <Link className={classes.routeDecoration} to={"/create-account"}>
-              Crear Nueva Cuenta
+         
+          <Link className={classes.routeDecoration} to={"/create-account"}>
+            Create New Account
             </Link>
           </Button>
 
-          <Button className={classes.btnRouteTwo}>
-            <Link className={classes.routeDecoration} to={"/recovery-password"}>
-              Recuperar Contraseña
-            </Link>
-          </Button>
+          {/* <Button className={classes.btnRouteTwo}> */}
+            {/* <Link className={classes.routeDecoration} to={"/recovery-password"}> */}
+              {/* Recuperar Contraseña */}
+            {/* </Link> */}
+          {/* </Button> */}
         </Box>
       </Box>
       </Box>
